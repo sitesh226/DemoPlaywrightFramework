@@ -1,0 +1,5 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","200","@smoke @api lists users","chromium","2026-05-23","passed","2026-05-23","User API tests","api/users.spec.js","",""
+"","992","@integration validates UI title and API data are available","chromium","2026-05-23","passed","2026-05-23","UI + API validation","integration/uiApi.spec.js","",""
+"","1044","@smoke @ui opens Playwright documentation from home page","chromium","2026-05-23","passed","2026-05-23","UI smoke tests","ui/login.spec.js","",""
+"","456","@api creates user payload through API","chromium","2026-05-23","passed","2026-05-23","User API tests","api/users.spec.js","",""
