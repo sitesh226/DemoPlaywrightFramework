@@ -6,9 +6,9 @@ dotenv.config({ quiet: true });
 
 export default defineConfig({
   testDir: './tests',
-  fullyParallel: false,
+  fullyParallel: false,   // Tests in same class execute sequentially when false. 
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : Number(process.env.RETRIES || 1),
+  retries: process.env.CI ? 2 : Number(process.env.RETRIES || 0),
   workers: process.env.CI ? 2 : Number(process.env.WORKERS || 4),
   timeout: 30 * 1000,
   expect: {
@@ -24,7 +24,14 @@ export default defineConfig({
     headless: process.env.HEADLESS !== 'false',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    trace: 'retain-on-failure',
+    trace: 'retain-on-failure',   // for tracing . 
+                      
+                  // 'on'	Always record trace
+                  // 'off'	Never record trace
+                  // 'retain-on-failure'	Keep trace only for failed tests
+                  // 'on-first-retry'	Record trace only during first retry
+                  // 'on-all-retries'	Record trace on every retry
+                  // 'retain-on-first-failure'
     actionTimeout: 10 * 1000,
     navigationTimeout: 20 * 1000,
   },

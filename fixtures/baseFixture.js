@@ -8,3 +8,12 @@ const test = baseTest.extend({
 });
 
 export { test, expect };
+
+
+
+// This code is creating a custom Playwright fixture.
+
+// It extends Playwright’s default test object and injects a reusable loginPage object into your tests.
+
+//Playwright starts test->Creates browser page-> Creates LoginPage object
+// ->Passes it into test->Executes test->Destroys fixture
