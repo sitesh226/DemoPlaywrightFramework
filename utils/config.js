@@ -10,6 +10,7 @@ const config = {
   ecomUserEmail: process.env.ECOM_USER_EMAIL || '',
   ecomUserPassword: process.env.ECOM_USER_PASSWORD || '',
   headless: process.env.HEADLESS !== 'false',
+  
 };
 
 export default config;
