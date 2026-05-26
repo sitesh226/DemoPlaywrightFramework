@@ -9,7 +9,7 @@ export default defineConfig({
   fullyParallel: false,   // Tests in same class execute sequentially when false. 
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : Number(process.env.RETRIES || 0),
-  workers: process.env.CI ? 2 : Number(process.env.WORKERS || 4),
+  workers: process.env.CI ? 2 : Number(process.env.WORKERS || 4), // Number of files in parallel
   timeout: 30 * 1000,
   expect: {
     timeout: 5 * 1000,
@@ -36,14 +36,14 @@ export default defineConfig({
     navigationTimeout: 20 * 1000,
   },
   projects: [
-    {
-      name: 'chromium',
-      // use: { ...devices['Desktop Chrome'] },
-    },
     // {
-    //   name: 'firefox',
-    //   use: { ...devices['Desktop Firefox'] },
+    //   name: 'chromium',
+    //   use: { ...devices['Desktop Chrome'] },
     // },
+    {
+      name: 'firefox',
+      use: { ...devices['Desktop Firefox'] },
+    },
     // {
     //   name: 'webkit',
     //   use: { ...devices['Desktop Safari'] },

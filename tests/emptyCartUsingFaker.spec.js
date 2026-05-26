@@ -5,10 +5,13 @@ import DashboardPage from '../pages/DashboardPage.js'
 import ClientLoginPage from '../pages/ClientLoginPage.js';
 import config from '../utils/config.js';
 
+import PageObjectManager from '../pages/PageObjectManager.js';
+
 
 let apiUtils;
 let token;
 let webContext;
+let pageManager;
 
 const fakePayloadResponse={
     data: [],
@@ -18,7 +21,8 @@ const fakePayloadResponse={
 test.beforeAll(async ({browser}) => {
   const context= await browser.newContext();
   const page= await context.newPage();
-  const clientLoginPage = new ClientLoginPage(page);
+  pageManager= new PageObjectManager(page);
+  const clientLoginPage=pageManager.getClientLoginPage();
   await clientLoginPage.openClientLoginPage();
   await clientLoginPage.clientPagelogin(config.ecomUserEmail,config.ecomUserPassword);
   await context.storageState({path: 'state.json'});
@@ -31,7 +35,7 @@ test.beforeAll(async ({browser}) => {
 test('@integration Check cart with fake response for order list', async () => {
   const page= await webContext.newPage();
   await page.goto(config.ecomClientUrl)
-  const dashboardpage = new DashboardPage(page);
+  const dashboardpage= pageManager.getDashboardPage();
   await page.pause()
   await page.route('**/api/ecom/order/get-orders-for-customer/*',
      async route=>{

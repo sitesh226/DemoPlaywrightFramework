@@ -1,6 +1,6 @@
 import { test, expect, request } from '@playwright/test';
 import config from '../utils/config.js';
-import ClientLoginPage from '../pages/ClientLoginPage.js';
+import PageObjectManager from '../pages/PageObjectManager.js';
 
 let apiUtils;
 let token;
@@ -10,7 +10,8 @@ test.beforeAll(async ({browser})=> {
 
     const context= await browser.newContext();
     const page= await context.newPage();
-    const clientLoginPage = new ClientLoginPage(page);
+    const pageManager = new PageObjectManager(page);
+    const clientLoginPage = pageManager.getClientLoginPage();
     await clientLoginPage.openClientLoginPage();
     await clientLoginPage.clientPagelogin(config.ecomUserEmail,config.ecomUserPassword);
     await context.storageState({path: 'state.json'});
