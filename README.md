@@ -254,11 +254,6 @@ If you know Java Selenium and TestNG, this mapping will help:
 | Object repository | files inside `locators/` |
 | Config properties | `.env` and `utils/config.js` |
 
-## Interview Explanation
-
-You can explain this framework like this:
-
-> This is a Playwright JavaScript automation framework using modern ES Modules. Tests are kept in one `tests` folder for simplicity. UI logic follows Page Object Model, locators are stored separately, and test data is stored in a separate `test-data` folder. For API testing, I created a simple API utility class with login and create-cart methods. In create-cart tests, I use `beforeAll` to login once, store the token, and reuse it across tests.
 
 ## Important Notes
 
